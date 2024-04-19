@@ -15,4 +15,10 @@ ComplexPlane::ComplexPlane(int _pixelWidth, int _pixelHeight) {
 	m_vArray.resize(_pixelWidth * _pixelHeight);
 }
 
+void ComplexPlane::updateRender()
+{
+	if (m_state == CALCULATING)
+	{
 
+	}
+}
