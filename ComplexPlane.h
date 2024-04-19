@@ -7,10 +7,12 @@
 
 using namespace std;
 
+//global constants
 const unsigned int MAX_ITER = 64;
 const float BASE_WIDTH = 4.0;
 const float BASE_HEIGHT = 4.0;
 const float BASE_ZOOM = 0.5;
+
 
 enum State {
 	CALCULATING,
@@ -19,8 +21,8 @@ enum State {
 class ComplexPlane : public Drawable
 {
 public:
-	ComplexPlane(int _pixelWidth, int _pixelHeight);
-	void draw(RenderTarget& target, RenderStates states) const { target.draw(m_vArray); }
+	ComplexPlane(int _pixelWidth, int _pixelHeight);									  //also looks complete?, nice
+	void draw(RenderTarget& target, RenderStates states) const { target.draw(m_vArray); } //complete
 	void zoomIn();
 	void zoomOut();
 	void setCenter(Vector2i mousePixel);
