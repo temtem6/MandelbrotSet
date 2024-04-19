@@ -19,13 +19,21 @@ ComplexPlane::ComplexPlane(int _pixelWidth, int _pixelHeight)
 
 void ComplexPlane::zoomIn()
 {
-
+	m_zoomCount++;
+	float local_x = BASE_WIDTH * pow(BASE_ZOOM, m_zoomCount);
+	float local_y = BASE_HEIGHT * m_aspectRatio * pow(BASE_ZOOM, m_zoomCount);
+	m_plane_size = { local_x, local_y };
+	m_state = State::CALCULATING;
 }
 
 
 void ComplexPlane::zoomOut()
 {
-
+	m_zoomCount--;
+	float local_x = BASE_WIDTH * pow(BASE_ZOOM, m_zoomCount);
+	float local_y = BASE_HEIGHT * m_aspectRatio * pow(BASE_ZOOM, m_zoomCount);
+	m_plane_size = { local_x, local_y };
+	m_state = State::CALCULATING;
 }
 
 
