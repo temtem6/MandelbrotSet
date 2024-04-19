@@ -11,6 +11,8 @@ ComplexPlane::ComplexPlane(int _pixelWidth, int _pixelHeight) {
 	m_plane_size = { BASE_WIDTH, BASE_HEIGHT * m_aspectRatio };
 	m_zoomCount = 0;
 	m_state = State::CALCULATING;
-
+	m_vArray.setPrimitiveType(Points);
+	m_vArray.resize(_pixelWidth * _pixelHeight);
 }
+
 
