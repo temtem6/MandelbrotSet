@@ -51,6 +51,15 @@ void ComplexPlane::updateRender()
 {
 	if (m_state == CALCULATING)
 	{
+		// j represents x, i represnts y
+		for (int i = 0; i < pixelHeight; i++)
+		{
+			for (int j = 0; j < pixelHeight; j++)
+			{
+				m_vArray[j + i * pixelWidth].position = { (float)j,(float)i };
 
+			}
+		}
 	}
+
 }
