@@ -16,7 +16,6 @@ ComplexPlane::ComplexPlane(int _pixelWidth, int _pixelHeight)
 	m_vArray.resize(_pixelWidth * _pixelHeight);
 }
 
-
 void ComplexPlane::zoomIn()
 {
 	m_zoomCount++;
@@ -39,13 +38,14 @@ void ComplexPlane::zoomOut()
 
 void ComplexPlane::setCenter(Vector2i mousePixel)
 {
-
+	m_plane_center = { static_cast<int>(mapPixelToCoords(mousePixel).x), static_cast<int>(mapPixelToCoords(mousePixel).y) };
+	m_state = CALCULATING;
 }
 
 
-void ComplexPlane::setMouse(Vector2i mousePixel)
+void ComplexPlane::setMouseLocation(Vector2i mousePixel)
 {
-
+	m_mouse_location = { static_cast<int>(mapPixelToCoords(mousePixel).x), static_cast<int>(mapPixelToCoords(mousePixel).y) };
 }
 
 
@@ -69,5 +69,18 @@ void ComplexPlane::updateRender()
 			}
 		}
 	}
+
+}
+
+size_t countIterations(Vector2f coord)
+{
+	
+}
+void iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b)
+{
+
+}
+Vector2f mapPixelToCoords(Vector2i mousePixel)
+{
 
 }
