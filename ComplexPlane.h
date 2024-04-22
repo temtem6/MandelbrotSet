@@ -26,7 +26,7 @@ public:
 	void zoomIn();
 	void zoomOut();
 	void setCenter(Vector2i mousePixel);
-	void setMouse(Vector2i mousePixel);
+	void setMouseLocation(Vector2i mousePixel);
 	void loadText(Text& text);
 	void updateRender();
 private:
@@ -38,6 +38,7 @@ private:
 	Vector2i m_plane_size;
 	int m_zoomCount;
 	State m_state;
+	Vector2f m_mouseLocation;
 
 };
 
