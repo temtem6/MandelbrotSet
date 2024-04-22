@@ -24,15 +24,11 @@ class ComplexPlane : public Drawable
 public:
 	ComplexPlane(int _pixelWidth, int _pixelHeight);									  //also looks complete?, nice
 	void draw(RenderTarget& target, RenderStates states) const { target.draw(m_vArray); } //complete
-	void updateRender(); //NOT COMPLETE
+	void updateRender(); //complete
 	void zoomIn(); //complete
 	void zoomOut(); //complete
 	void setCenter(Vector2i mousePixel);//complete
 	void setMouseLocation(Vector2i mousePixel); //complete
-	void zoomIn();
-	void zoomOut();
-	void setCenter(Vector2i mousePixel);
-	void setMouseLocation(Vector2i mousePixel);
 	void loadText(Text& text);
 	size_t countIterations(Vector2f coord);
 	void iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b);
@@ -44,7 +40,7 @@ private:
 	double m_aspectRatio;
 	Vector2i m_plane_center;
 	Vector2i m_plane_size;
-	Vector2i m_mouse_location;
+	Vector2i m_mouse_location; //haven't used this var
 	int m_zoomCount;
 	State m_state;
 	Vector2f m_mouseLocation;
