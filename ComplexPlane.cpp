@@ -72,11 +72,11 @@ void ComplexPlane::updateRender()
 
 }
 
-size_t countIterations(Vector2f coord)
+size_t ComplexPlane::countIterations(Vector2f coord)
 {
 	
 }
-void iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b)
+void ComplexPlane::iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b)
 {
 
 }
