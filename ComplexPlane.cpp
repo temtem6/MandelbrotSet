@@ -55,7 +55,7 @@ void ComplexPlane::loadText(Text& text) //not sure about the "Cursor should upda
 	ss << "Mandelbrot Set" << endl << "Center: (" << m_plane_center.x << "," << m_plane_center.y << ")" << endl
 		<< "Cursor: " << m_mouseLocation.x << "," << m_mouseLocation.y << ")" << endl << "Left-click to Zoom in" << endl << "Right-click to Zoom out";
 	cout << ss.str();
-
+}
 void ComplexPlane::updateRender()
 {
 	if (m_state == CALCULATING)
