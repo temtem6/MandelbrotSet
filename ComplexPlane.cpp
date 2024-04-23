@@ -1,5 +1,6 @@
 #include "ComplexPlane.h"
 #include <sstream>
+#include <cmath>
 using namespace sf;
 using namespace std;
 
@@ -85,13 +86,16 @@ void ComplexPlane::updateRender()
 size_t ComplexPlane::countIterations(Vector2f coord)
 {
 	int iterations = 0;
-	float z_n;
-	float z_n1;
-	float hold_z_n;
+	float c = sqrt(pow(coord.x(), 2) + pow(coord.y(), 2));		// c = a + bi == 
+	float z_n = 0;
+	float z_n1 = 0;
+	float hold;
 	while (iterations < 64)
 	{
-		  
-		if (!(z_n < 2 && z_n > 2)) {return iterations;}
+		hold = z_n1;
+		z_n1 = pow(z_n, 2) + c;
+		z_n = hold;
+		if (z_n > 2) {return iterations;}
 			
 	}
 
