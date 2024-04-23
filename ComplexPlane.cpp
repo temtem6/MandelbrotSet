@@ -65,8 +65,10 @@ void ComplexPlane::updateRender()
 		{
 			for (int j = 0; j < pixelHeight; j++)
 			{
+				Vector2i temp = [i, j]
 				m_vArray[j + i * pixelWidth].position = { (float)j,(float)i };
-
+				m_vArray. = ComplexPlane::mapPixelToCoords(temp)
+				
 			}
 		}
 	}
@@ -75,7 +77,8 @@ void ComplexPlane::updateRender()
 
 size_t ComplexPlane::countIterations(Vector2f coord)
 {
-	
+	int iterations = 0;
+	float 
 }
 void ComplexPlane::iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b)
 {
