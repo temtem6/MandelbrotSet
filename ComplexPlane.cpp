@@ -1,5 +1,5 @@
 #include "ComplexPlane.h"
-
+#include "sstream"
 using namespace sf;
 using namespace std;
 
@@ -49,12 +49,13 @@ void ComplexPlane::setMouseLocation(Vector2i mousePixel)
 }
 
 
-void ComplexPlane::loadText(Text& text)
+void ComplexPlane::loadText(Text& text) //not sure about the "Cursor should update live as the user moves the mouse.  Center should only update after they click." i think that might just update itself as long as this gets called in main at the right time?
 {
-
+	stringstream ss;
+	ss << "Mandelbrot Set" << endl << "Center: (" << m_plane_center.x << "," << m_plane_center.y << ")" << endl
+		<< "Cursor: " << m_mouseLocation.x << "," << m_mouseLocation.y << ")" << endl << "Left-click to Zoom in" << endl << "Right-click to Zoom out";
+	cout << ss.str();
 }
-
-
 void ComplexPlane::updateRender()
 {
 	if (m_state == State::CALCULATING)
