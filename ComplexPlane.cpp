@@ -39,7 +39,7 @@ void ComplexPlane::zoomOut()
 void ComplexPlane::setCenter(Vector2i mousePixel)
 {
 	m_plane_center = { static_cast<int>(mapPixelToCoords(mousePixel).x), static_cast<int>(mapPixelToCoords(mousePixel).y) };
-	m_state = CALCULATING;
+	m_state = State::CALCULATING;
 }
 
 
@@ -57,7 +57,7 @@ void ComplexPlane::loadText(Text& text)
 
 void ComplexPlane::updateRender()
 {
-	if (m_state == CALCULATING)
+	if (m_state == State::CALCULATING)
 	{
 		// j represents x, i represnts y
 		for (int i = 0; i < pixelHeight; i++)
