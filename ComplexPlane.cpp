@@ -85,8 +85,19 @@ void ComplexPlane::updateRender()
 size_t ComplexPlane::countIterations(Vector2f coord)
 {
 	int iterations = 0;
-	float 
+	float z_n;
+	float z_n1;
+	float hold_z_n;
+	while (iterations < 64)
+	{
+		  
+		if (!(z_n < 2 && z_n > 2)) {return iterations;}
+			
+	}
+
+	return 64;
 }
+
 void ComplexPlane::iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b)
 {
 		
