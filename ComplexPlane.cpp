@@ -79,7 +79,20 @@ size_t ComplexPlane::countIterations(Vector2f coord)
 }
 void ComplexPlane::iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b)
 {
-
+		
+	for (int i = 0; i < pixelHeight; i++)
+	{
+		//random color for each row
+		Uint8 r, g, b;
+		r = rand() % 256;
+		g = rand() % 256;
+		b = rand() % 256;
+		for (int j = 0; j < pixelWidth; j++)
+		{
+			m_vArray[i * pixelWidth + j].position = { (float)j, (float)i };
+			m_vArray[i * pixelWidth + j].color = { r,g,b };
+		}
+	}
 }
 Vector2f ComplexPlane::mapPixelToCoords(Vector2i mousePixel)
 {
