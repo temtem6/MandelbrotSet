@@ -6,7 +6,7 @@ int main()
 {
 	int pixelWidth = sf::VideoMode::getDesktopMode().width;
 	int pixelHeight = sf::VideoMode::getDesktopMode().height;
-	VideoMode vm(pixelWidth, pixelHeight);
+	VideoMode vm(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height);
 	RenderWindow window(vm, "Mandelbrot Set", Style::Default);
 
 	View view;

@@ -36,16 +36,15 @@ public:
 	sf::Vector2f mapPixelToCoords(sf::Vector2i mousePixel); //complete
 private:
 	sf::VertexArray m_vArray;
-	int pixelWidth;
-	int pixelHeight;
-	double m_aspectRatio;
-	sf::Vector2i m_plane_center;
-	sf::Vector2i m_plane_size; 
-	sf::Vector2i m_mouse_location;
+	double pixelWidth;
+	double pixelHeight;
+	float m_aspectRatio;
+	sf::Vector2f m_plane_center;
+	sf::Vector2f m_plane_size; 
+	sf::Vector2f m_mouseLocation;
 	int m_zoomCount;
 	State m_state;
-	sf::Vector2f m_mouseLocation;
-
+	sf::Vector2i m_pixel_size;
 };
 
 

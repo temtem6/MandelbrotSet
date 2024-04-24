@@ -10,7 +10,7 @@ ComplexPlane::ComplexPlane(int _pixelWidth, int _pixelHeight)
 	pixelHeight = _pixelHeight;
 	m_aspectRatio = pixelHeight / pixelWidth;
 	m_plane_center = { 0, 0 };
-	m_plane_size = { static_cast<int>(BASE_WIDTH), static_cast<int>(BASE_HEIGHT * m_aspectRatio)};
+	m_plane_size = { (BASE_WIDTH), (BASE_HEIGHT * m_aspectRatio)};
 	m_zoomCount = 0;
 	m_state = State::CALCULATING;
 	m_vArray.setPrimitiveType(Points);
@@ -22,7 +22,7 @@ void ComplexPlane::zoomIn()
 	m_zoomCount++;
 	float local_x = BASE_WIDTH * pow(BASE_ZOOM, m_zoomCount);
 	float local_y = BASE_HEIGHT * m_aspectRatio * pow(BASE_ZOOM, m_zoomCount);
-	m_plane_size = { static_cast<int>(local_x), static_cast<int>(local_y) };
+	m_plane_size = { local_x, local_y };
 	m_state = State::CALCULATING;
 }
 
@@ -32,14 +32,14 @@ void ComplexPlane::zoomOut()
 	m_zoomCount--;
 	float local_x = BASE_WIDTH * pow(BASE_ZOOM, m_zoomCount);
 	float local_y = BASE_HEIGHT * m_aspectRatio * pow(BASE_ZOOM, m_zoomCount);
-	m_plane_size = { static_cast<int>(local_x), static_cast<int>(local_y) };
+	m_plane_size = { local_x, local_y };
 	m_state = State::CALCULATING;
 }
 
 
 void ComplexPlane::setCenter(Vector2i mousePixel)
 {
-	m_plane_center = { static_cast<int>(mapPixelToCoords(mousePixel).x), static_cast<int>(mapPixelToCoords(mousePixel).y) };
+	m_plane_center = { (mapPixelToCoords(mousePixel).x), (mapPixelToCoords(mousePixel).y) };
 	m_state = State::CALCULATING;
 }
 
