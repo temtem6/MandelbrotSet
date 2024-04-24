@@ -82,29 +82,17 @@ void ComplexPlane::updateRender()
 
 }
 
-size_t ComplexPlane::countIterations(Vector2f coord)
+size_t ComplexPlane::countIterations(sf::Vector2f coord)
 {
 	int iterations = 0;
-	float c = sqrt(pow(coord.x(), 2) + pow(coord.y(), 2));		// c = a + bi == 
-	float z_n = 0;
-	float z_n1 = 0;
-	float hold;
-	while (iterations < 64)
+	double c = sqrt(pow(coord.x, 2) + pow(coord.y, 2));
+	double z_n = 0;
+	double temp = 0;
+	while (iterations < 64) 
 	{
-<<<<<<< HEAD
-		hold_z_n = z_n1;
-		z_n1 = pow(z_n, 2);
-		  
-		if (!(z_n < 2 && z_n > 2)) {return iterations;}
-=======
-		hold = z_n1;
-		z_n1 = pow(z_n, 2) + c;
-		z_n = hold;
-		if (z_n > 2) {return iterations;}
->>>>>>> 6b9d408cadd05bce85f87cc1f402fb76c40e012f
-			
+		z_n = z_n + c;
+		if (z_n > 2) { return iterations; break; }
 	}
-
 	return 64;
 }
 
