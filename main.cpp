@@ -61,7 +61,7 @@ int main()
 		****************************************
 		*/
 		//complex.updateRender();
-		complex.loadText(text);
+		//complex.loadText(text);
 
 
 		/*
