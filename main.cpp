@@ -61,7 +61,7 @@ int main()
 		****************************************
 		*/
 		//complex.updateRender();
-		//complex.loadText(text);
+		complex.loadText(text);
 
 
 		/*
@@ -69,7 +69,7 @@ int main()
 		Draw the scene
 		****************************************
 		*/
-
+	
 		window.clear();
 		window.draw(complex);
 		window.draw(text);
