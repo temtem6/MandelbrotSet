@@ -20,31 +20,31 @@ enum State {
 	CALCULATING,
 	DISPLAYING
 };
-class ComplexPlane : public Drawable
+class ComplexPlane : public sf::Drawable
 {
 public:
 	ComplexPlane(int _pixelWidth, int _pixelHeight);									  //also looks complete?, nice
-	void draw(RenderTarget& target, RenderStates states) const { target.draw(m_vArray); } //complete
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const { target.draw(m_vArray); } //complete
 	void updateRender(); //NOT COMPLETE
 	void zoomIn(); //complete
 	void zoomOut(); //complete
-	void setCenter(Vector2i mousePixel);//complete
-	void setMouseLocation(Vector2i mousePixel); //complete
-	void loadText(Text& text);
-	size_t countIterations(Vector2f coord);
-	void iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b);
-	Vector2f mapPixelToCoords(Vector2i mousePixel);//complete
+	void setCenter(sf::Vector2i mousePixel);//complete
+	void setMouseLocation(sf::Vector2i mousePixel); //complete
+	void loadText(sf::Text& text);
+	size_t countIterations(sf::Vector2f coord);
+	void iterationsToRGB(size_t count, sf::Uint8& r, sf::Uint8& g, sf::Uint8& b);
+	sf::Vector2f mapPixelToCoords(sf::Vector2i mousePixel); //complete
 private:
-	VertexArray m_vArray;
+	sf::VertexArray m_vArray;
 	int pixelWidth;
 	int pixelHeight;
 	double m_aspectRatio;
-	Vector2i m_plane_center;
-	Vector2i m_plane_size; 
-	Vector2i m_mouse_location;
+	sf::Vector2i m_plane_center;
+	sf::Vector2i m_plane_size; 
+	sf::Vector2i m_mouse_location;
 	int m_zoomCount;
 	State m_state;
-	Vector2f m_mouseLocation;
+	sf::Vector2f m_mouseLocation;
 
 };
 

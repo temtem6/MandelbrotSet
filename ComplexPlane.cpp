@@ -9,7 +9,7 @@ ComplexPlane::ComplexPlane(int _pixelWidth, int _pixelHeight)
 	pixelHeight = _pixelHeight;
 	m_aspectRatio = _pixelHeight / _pixelWidth;
 	m_plane_center = { 0, 0 };
-	m_plane_size = { BASE_WIDTH, BASE_HEIGHT * m_aspectRatio };
+	m_plane_size = { static_cast<int>(BASE_WIDTH), static_cast<int>(BASE_HEIGHT * m_aspectRatio) };
 	m_zoomCount = 0;
 	m_state = State::CALCULATING;
 	m_vArray.setPrimitiveType(Points);
@@ -21,7 +21,7 @@ void ComplexPlane::zoomIn()
 	m_zoomCount++;
 	float local_x = BASE_WIDTH * pow(BASE_ZOOM, m_zoomCount);
 	float local_y = BASE_HEIGHT * m_aspectRatio * pow(BASE_ZOOM, m_zoomCount);
-	m_plane_size = { local_x, local_y };
+	m_plane_size = { static_cast<int>(local_x), static_cast<int>(local_y) };
 	m_state = State::CALCULATING;
 }
 
@@ -31,7 +31,7 @@ void ComplexPlane::zoomOut()
 	m_zoomCount--;
 	float local_x = BASE_WIDTH * pow(BASE_ZOOM, m_zoomCount);
 	float local_y = BASE_HEIGHT * m_aspectRatio * pow(BASE_ZOOM, m_zoomCount);
-	m_plane_size = { local_x, local_y };
+	m_plane_size = { static_cast<int>(local_x), static_cast<int>(local_y) };
 	m_state = State::CALCULATING;
 }
 
@@ -45,7 +45,7 @@ void ComplexPlane::setCenter(Vector2i mousePixel)
 
 void ComplexPlane::setMouseLocation(Vector2i mousePixel)
 {
-	m_mouseLocation = { static_cast<int>(mapPixelToCoords(mousePixel).x), static_cast<int>(mapPixelToCoords(mousePixel).y) };
+	m_mouseLocation = { mapPixelToCoords(mousePixel).x, mapPixelToCoords(mousePixel).y };
 }
 
 
@@ -66,10 +66,9 @@ void ComplexPlane::updateRender()
 			for (int j = 0; j < pixelHeight; j++)
 			{
 				Vector2i temp = { j, i };
-				Vector2f coords;
 				m_vArray[j + i * pixelWidth].position = { (float)j,(float)i };
-				coords = ComplexPlane::mapPixelToCoords(temp);
-				size_t bruh = countIterations(coords);
+				m_mouseLocation = ComplexPlane::mapPixelToCoords(temp);
+				size_t bruh = countIterations(m_mouseLocation);
 				Uint8 r;
 				Uint8 g;
 				Uint8 b;
@@ -90,6 +89,8 @@ size_t ComplexPlane::countIterations(Vector2f coord)
 	float hold_z_n;
 	while (iterations < 64)
 	{
+		hold_z_n = z_n1;
+		z_n1 = pow(z_n, 2);
 		  
 		if (!(z_n < 2 && z_n > 2)) {return iterations;}
 			
