@@ -61,8 +61,9 @@ int main()
 		****************************************
 		*/
 		//complex.updateRender();
-		//complex.loadText(text);
-
+		cout << "test" << endl;
+		complex.loadText(text);
+		cout << "test 2" << endl;
 
 		/*
 		****************************************

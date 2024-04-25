@@ -71,10 +71,11 @@ void ComplexPlane::updateRender()
 	if (m_state == State::CALCULATING)
 	{
 		// j represents x, i represnts y
-		for (int i = 0; i < pixelHeight; i++)
+		for (int i = 0; i < pixelWidth; i++)
 		{
 			for (int j = 0; j < pixelHeight; j++)
 			{
+				cout << "testing 1" << endl;
 				Vector2i temp = { j, i };
 				m_vArray[j + i * pixelWidth].position = { (float)j,(float)i };
 				m_mouseLocation = ComplexPlane::mapPixelToCoords(temp);
@@ -100,6 +101,8 @@ size_t ComplexPlane::countIterations(sf::Vector2f coord)
 	while (iterations < 64) 
 	{
 		z_n = z_n + c;
+		// cout << z_n << " " << iterations << " " << c <<  endl;
+		iterations++;
 		if (z_n > 2) { return iterations; break; }
 	}
 	return 64;
