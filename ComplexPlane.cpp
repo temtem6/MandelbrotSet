@@ -64,9 +64,9 @@ void ComplexPlane::updateRender()
 	if (m_state == State::CALCULATING)
 	{
 		// j represents x, i represnts y
-		for (int i = 0; i < pixelWidth; i++)
+		for (int i = 0; i < pixelHeight; i++)
 		{
-			for (int j = 0; j < pixelHeight; j++)
+			for (int j = 0; j < pixelWidth; j++)
 			{
 				cout << "testing 1" << endl;
 				Vector2i temp = { j, i };

@@ -70,15 +70,9 @@ int main()
 		Update the scene
 		****************************************
 		*/
-		//complex.updateRender();
-<<<<<<< HEAD
-		complex.loadText(text);
-=======
-		cout << "test" << endl;
-		complex.loadText(text);
-		cout << "test 2" << endl;
->>>>>>> 0c2b04591c37957140f3dc53b48e5d8e0f558cc9
+		complex.updateRender();
 
+		complex.loadText(text);
 		/*
 		****************************************
 		Draw the scene
