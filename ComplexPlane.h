@@ -44,7 +44,7 @@ private:
 	sf::Vector2f m_mouseLocation;
 	int m_zoomCount;
 	State m_state;
-	sf::Vector2i m_pixel_size;
+	sf::Vector2f m_pixel_size;
 };
 
 

@@ -54,11 +54,11 @@ int main()
 					complex.setCenter(mousepixel);
 				}
 			}
-			/*else if (event.MouseMoved) {
+			else if (event.MouseMoved) {
 				
-				complex.setCenter();
-				{{{{{	FINISH THIS FUNCTION }}}}}
-			}*/
+				complex.setMouseLocation({ event.mouseMove.x, event.mouseMove.y });
+				
+			}
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Escape))
 		{

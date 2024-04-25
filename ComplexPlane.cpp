@@ -16,6 +16,8 @@ ComplexPlane::ComplexPlane(int _pixelWidth, int _pixelHeight)
 	m_state = State::CALCULATING;
 	m_vArray.setPrimitiveType(Points);
 	m_vArray.resize(_pixelWidth * _pixelHeight);
+	m_pixel_size.x = _pixelWidth;
+	m_pixel_size.y = _pixelHeight;
 }
 
 void ComplexPlane::zoomIn()
@@ -71,8 +73,8 @@ void ComplexPlane::updateRender()
 			{
 				Vector2i temp = { j, i };
 				m_vArray[j + i * pixelWidth].position = { (float)j,(float)i };
-				m_mouseLocation = ComplexPlane::mapPixelToCoords(temp);
-				size_t bruh = countIterations(m_mouseLocation);
+				sf::Vector2f crispy = ComplexPlane::mapPixelToCoords(temp);
+				size_t bruh = countIterations(crispy);
 				Uint8 r;
 				Uint8 g;
 				Uint8 b;
@@ -92,60 +94,60 @@ size_t ComplexPlane::countIterations(sf::Vector2f coord)
 	double im = coord.y;
 	complex<double> c (re, im);
 	complex<double> z(0, 0);
-	while (iterations < 64) 
+	while (iterations < MAX_ITER && abs(z) < 2) 
 	{
 		z = z*z + c;
 		// cout << z_n << " " << iterations << " " << c <<  endl;
-		if (abs(z) > 2) { return iterations; break; }
+		//if (abs(z) > 2) { return iterations; break; }
 		iterations++;
 	}
-	return 64;
+	return iterations;
 }
 
 void ComplexPlane::iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b)
 {
 		
 		//random color for each row
-		if (count > 62) {
+		if (count == MAX_ITER) {
 			r = 0;
 			g = 0;
 			b = 0;
 		}
-		else if (count > 55)
+		else if (count > 50)
 		{
-			r = 50;
-			g = 25;
+			r = 170;
+			g = 50;
 			b = 255;
 		}
-		else if (count > 45)
+		else if (count > 40)
 		{
 			r = 0;
 			g = 150;
 			b = 200;
 		}
-		else if (count > 35)
+		else if (count > 30)
 		{
 			r = 14;
 			g = 255;
 			b = 57;
 		}
-		else if (count > 25)
+		else if (count > 20)
 		{
 			r = 14;
 			g = 172;
 			b = 180;
 		}
-		else if (count > 15)
+		else if (count > 10)
 		{
-			r = 250;
-			b = 25;
-			b = 0;
+			r = 255;
+			g = 100;
+			b = 150;
 		}
 }
 Vector2f ComplexPlane::mapPixelToCoords(Vector2i mousePixel)
 {
-	//Vector2f MouseLocation;
-	m_mouseLocation.x = (mousePixel.x - 0) / (pixelWidth - 0) * (m_plane_size.x) + (m_plane_center.x-m_plane_size.x/2.0);
-	m_mouseLocation.y = (mousePixel.y - pixelHeight) / (0 - pixelHeight) * (m_plane_size.y) + (m_plane_center.y - m_plane_size.y/2.0);
-	return m_mouseLocation;
+	Vector2f MouseLocation;
+	MouseLocation.x = (mousePixel.x - 0) / (m_pixel_size.x - 0) * (m_plane_size.x) + (m_plane_center.x-m_plane_size.x/2.0);
+	MouseLocation.y = (mousePixel.y - m_pixel_size.y) / (0 - m_pixel_size.y) * (m_plane_size.y) + (m_plane_center.y - m_plane_size.y/2.0);
+	return MouseLocation;
 }
