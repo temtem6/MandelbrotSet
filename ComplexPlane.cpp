@@ -91,7 +91,7 @@ size_t ComplexPlane::countIterations(sf::Vector2f coord)
 	double z_n = 0;
 	while (iterations < 64) 
 	{
-		z_n = z_n + c;
+		z_n = z_n*z_n + c;
 		// cout << z_n << " " << iterations << " " << c <<  endl;
 		if (z_n > 2) { return iterations; break; }
 		iterations++;
@@ -103,36 +103,36 @@ void ComplexPlane::iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b)
 {
 		
 		//random color for each row
-		if (count < 2) {
+		if (count > 62) {
 			r = 0;
 			g = 0;
 			b = 0;
 		}
-		else if (count < 14)
+		else if (count > 55)
 		{
-			r = 0;
-			g = 0;
+			r = 50;
+			g = 25;
 			b = 255;
 		}
-		else if (count < 26)
+		else if (count > 45)
 		{
 			r = 0;
 			g = 150;
 			b = 200;
 		}
-		else if (count < 39)
+		else if (count > 35)
 		{
-			r = 0;
+			r = 14;
 			g = 255;
-			b = 0;
+			b = 57;
 		}
-		else if (count < 51)
+		else if (count > 25)
 		{
-			r = 150;
-			g = 150;
-			b = 0;
+			r = 14;
+			g = 172;
+			b = 180;
 		}
-		else if (count < 64)
+		else if (count > 15)
 		{
 			r = 250;
 			b = 25;
