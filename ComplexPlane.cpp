@@ -54,7 +54,7 @@ void ComplexPlane::loadText(Text& text) //not sure about the "Cursor should upda
 {
 	stringstream ss;
 	ss << "Mandelbrot Set" << endl << "Center: (" << m_plane_center.x << "," << m_plane_center.y << ")" << endl;
-	ss << "Cursor: " << m_mouseLocation.x << "," << m_mouseLocation.y << ")" << endl;
+	ss << "Cursor: (" << m_mouseLocation.x << "," << m_mouseLocation.y << ")" << endl;
 	ss	<< "Left-click to Zoom in" << endl << "Right-click to Zoom out";
 
 	text.setString(ss.str());
@@ -68,7 +68,6 @@ void ComplexPlane::updateRender()
 		{
 			for (int j = 0; j < pixelWidth; j++)
 			{
-				cout << "testing 1" << endl;
 				Vector2i temp = { j, i };
 				m_vArray[j + i * pixelWidth].position = { (float)j,(float)i };
 				m_mouseLocation = ComplexPlane::mapPixelToCoords(temp);
@@ -90,13 +89,12 @@ size_t ComplexPlane::countIterations(sf::Vector2f coord)
 	int iterations = 0;
 	double c = sqrt(pow(coord.x, 2) + pow(coord.y, 2));
 	double z_n = 0;
-	double temp = 0;
 	while (iterations < 64) 
 	{
 		z_n = z_n + c;
 		// cout << z_n << " " << iterations << " " << c <<  endl;
-		iterations++;
 		if (z_n > 2) { return iterations; break; }
+		iterations++;
 	}
 	return 64;
 }
@@ -104,24 +102,47 @@ size_t ComplexPlane::countIterations(sf::Vector2f coord)
 void ComplexPlane::iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b)
 {
 		
-	for (int i = 0; i < pixelHeight; i++)
-	{
 		//random color for each row
-		Uint8 r, g, b;
-		r = rand() % 256;
-		g = rand() % 256;
-		b = rand() % 256;
-		for (int j = 0; j < pixelWidth; j++)
-		{
-			m_vArray[i * pixelWidth + j].position = { (float)j, (float)i };
-			m_vArray[i * pixelWidth + j].color = { r,g,b };
+		if (count < 2) {
+			r = 0;
+			g = 0;
+			b = 0;
 		}
-	}
+		else if (count < 14)
+		{
+			r = 0;
+			g = 0;
+			b = 255;
+		}
+		else if (count < 26)
+		{
+			r = 0;
+			g = 150;
+			b = 200;
+		}
+		else if (count < 39)
+		{
+			r = 0;
+			g = 255;
+			b = 0;
+		}
+		else if (count < 51)
+		{
+			r = 150;
+			g = 150;
+			b = 0;
+		}
+		else if (count < 64)
+		{
+			r = 250;
+			b = 25;
+			b = 0;
+		}
 }
 Vector2f ComplexPlane::mapPixelToCoords(Vector2i mousePixel)
 {
-	Vector2f MouseLocation;
-	MouseLocation.x = (mousePixel.x - 0) / (m_plane_size.x - 0) * (m_plane_size.x) + (m_plane_center.x-m_plane_size.x/2.0);
-	MouseLocation.y = (mousePixel.y - m_plane_size.y) / (0 - m_plane_size.y) * (m_plane_size.y) + (m_plane_center.y - m_plane_size.y/2.0);
-	return MouseLocation;
+	//Vector2f MouseLocation;
+	m_mouseLocation.x = (mousePixel.x - 0) / (pixelWidth - 0) * (m_plane_size.x) + (m_plane_center.x-m_plane_size.x/2.0);
+	m_mouseLocation.y = (mousePixel.y - pixelHeight) / (0 - pixelHeight) * (m_plane_size.y) + (m_plane_center.y - m_plane_size.y/2.0);
+	return m_mouseLocation;
 }
