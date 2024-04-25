@@ -52,19 +52,12 @@ void ComplexPlane::setMouseLocation(Vector2i mousePixel)
 
 void ComplexPlane::loadText(Text& text) //not sure about the "Cursor should update live as the user moves the mouse.  Center should only update after they click." i think that might just update itself as long as this gets called in main at the right time?
 {
-	sf::Font font;
-	if (!font.loadFromFile("arial.ttf"))
-	{
-		std::cout << "Unable to upload file" << std::endl;
-	}
-	text.setFont(font);
-	text.setCharacterSize(30);
-	text.setFillColor(sf::Color::Yellow);
-	text.setStyle(sf::Text::Bold);
 	stringstream ss;
-	ss << "Mandelbrot Set" << endl << "Center: (" << m_plane_center.x << "," << m_plane_center.y << ")" << endl
-		<< "Cursor: " << m_mouseLocation.x << "," << m_mouseLocation.y << ")" << endl << "Left-click to Zoom in" << endl << "Right-click to Zoom out";
-	cout << ss.str();
+	ss << "Mandelbrot Set" << endl << "Center: (" << m_plane_center.x << "," << m_plane_center.y << ")" << endl;
+	ss << "Cursor: " << m_mouseLocation.x << "," << m_mouseLocation.y << ")" << endl;
+	ss	<< "Left-click to Zoom in" << endl << "Right-click to Zoom out";
+
+	text.setString(ss.str());
 }
 void ComplexPlane::updateRender()
 {

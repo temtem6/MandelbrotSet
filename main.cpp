@@ -16,6 +16,16 @@ int main()
 
 	ComplexPlane complex(pixelWidth, pixelHeight);
 	Text text;
+	sf::Font font;
+	if (!font.loadFromFile("arial.ttf"))
+	{
+		std::cout << "Unable to upload file" << std::endl;
+	}
+	text.setFont(font);
+	text.setCharacterSize(30);
+	text.setFillColor(sf::Color::Yellow);
+	text.setStyle(sf::Text::Bold);
+	
 	while (window.isOpen())
 	{
 
@@ -61,8 +71,7 @@ int main()
 		****************************************
 		*/
 		//complex.updateRender();
-		//complex.loadText(text);
-
+		complex.loadText(text);
 
 		/*
 		****************************************
