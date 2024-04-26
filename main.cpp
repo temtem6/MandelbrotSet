@@ -59,7 +59,7 @@ int main()
 
 				Vector2i mousepixel = { event.mouseButton.x, event.mouseButton.y };
 				//complex.setCenter(mousepixel);
-				complex.setMouseLocation(mousepixel);
+				//complex.setMouseLocation(mousepixel);
 			}
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Escape))
