@@ -55,15 +55,8 @@ int main()
 				}
 			}
 			else if (event.MouseMoved) {
-<<<<<<< HEAD
-				
-				complex.setMouseLocation({ event.mouseMove.x, event.mouseMove.y });
-				
-=======
 				Vector2i mousepixel = { event.mouseButton.x, event.mouseButton.y };
 				//complex.setCenter(mousepixel);
-				complex.setMouseLocation(mousepixel);
->>>>>>> c5abeb1419487f5c2c894894eac9064f8f670872
 			}
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Escape))
