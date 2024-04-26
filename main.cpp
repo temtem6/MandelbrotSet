@@ -57,7 +57,7 @@ int main()
 			else if (event.MouseMoved) {
 				complex.setMouseLocation({ event.mouseMove.x, event.mouseMove.y });
 
-				Vector2i mousepixel = { event.mouseButton.x, event.mouseButton.y };
+				//Vector2i mousepixel = { event.mouseButton.x, event.mouseButton.y };
 				//complex.setCenter(mousepixel);
 				//complex.setMouseLocation(mousepixel);
 			}
