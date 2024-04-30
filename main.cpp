@@ -28,7 +28,7 @@ int main()
 	
 	while (window.isOpen())
 	{
-
+		//s
 		/*
 		****************************************
 		Handle the players input
